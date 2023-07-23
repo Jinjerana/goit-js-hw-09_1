@@ -11,12 +11,27 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 
 
   const calendar = document.querySelector('#datetime-picker');
-  const startBtn = document.querySelector('[data-start]');
-  const timer = document.querySelector('.timer');
-  const days = document.querySelector('[data-days]');
-  const hours = document.querySelector('[data-hours]');
-  const minutes = document.querySelector('[data-minutes]');
-  const seconds = document.querySelector('[data-seconds]');
+  const startBtn = document.querySelector('button[data-start]');
+  
+  // const timer = document.querySelector('.timer');
+  // const days = document.querySelector('value[data-days]');
+  // const hours = document.querySelector('value[data-hours]');
+  // const minutes = document.querySelector('value[data-minutes]');
+  // const seconds = document.querySelector('value[data-seconds]');
+
+  refs = {
+    timer: document.querySelector('.timer'),
+  days: document.querySelector('span[data-days]'),
+  hours: document.querySelector('span[data-hours]'),
+  minutes: document.querySelector('span[data-minutes]'),
+  seconds: document.querySelector('span[data-seconds]'),
+  }
+  
+  // const timer = document.querySelector('.timer');
+  // const days = document.querySelector('value[data-days]');
+  // const hours = document.querySelector('value[data-hours]');
+  // const minutes = document.querySelector('value[data-minutes]');
+  // const seconds = document.querySelector('value[data-seconds]');
 
 
 const TIMER_DELAY = 1000;
@@ -100,10 +115,10 @@ startBtn.addEventListener('click', startTimer);
 //       }
 function updateTimer(delta) {      
 const { days, hours, minutes, seconds } = convertMs(delta);
-      days.textContent = addLeadingZero(days);
-      hours.textContent = addLeadingZero(hours);
-      minutes.textContent = addLeadingZero(minutes);
-      seconds.textContent = addLeadingZero(seconds);
+      refs.days.textContent = addLeadingZero(days);
+      refs.hours.textContent = addLeadingZero(hours);
+      refs.minutes.textContent = addLeadingZero(minutes);
+      refs.seconds.textContent = addLeadingZero(seconds);
 }
       // const { days, hours, minutes, seconds } = this.convertMs(delta);
       // this.rootSelector.querySelector('[data-days]').textContent =
