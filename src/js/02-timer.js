@@ -14,12 +14,12 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
   const startBtn = document.querySelector('button[data-start]');
   
   // const timer = document.querySelector('.timer');
-  // const days = document.querySelector('value[data-days]');
-  // const hours = document.querySelector('value[data-hours]');
-  // const minutes = document.querySelector('value[data-minutes]');
-  // const seconds = document.querySelector('value[data-seconds]');
+  // const days = document.querySelector('span[data-days]');
+  // const hours = document.querySelector('span[data-hours]');
+  // const minutes = document.querySelector('span[data-minutes]');
+  // const seconds = document.querySelector('span[data-seconds]');
 
-  refs = {
+  const refs = {
     timer: document.querySelector('.timer'),
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),
@@ -36,9 +36,9 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const TIMER_DELAY = 1000;
 let isActive = false;
-// let intervalId = null;
-// let selectedDate = null;
-// let currentDate = null;
+let intervalId = null;
+let selectedDate = null;
+let currentDate = null;
 startBtn.disabled = true;
 
 const options = {
@@ -114,7 +114,7 @@ startBtn.addEventListener('click', startTimer);
 //         return;
 //       }
 function updateTimer(delta) {      
-const { days, hours, minutes, seconds } = convertMs(delta);
+let { days, hours, minutes, seconds } = convertMs(delta);
       refs.days.textContent = addLeadingZero(days);
       refs.hours.textContent = addLeadingZero(hours);
       refs.minutes.textContent = addLeadingZero(minutes);
