@@ -12,11 +12,11 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 
   const calendar = document.querySelector('#datetime-picker');
   const startBtn = document.querySelector('[data-start]');
-  // timer: document.querySelector('.timer'),
-  let days = document.querySelector('[data-days]');
-  let hours = document.querySelector('[data-hours]');
-  let minutes = document.querySelector('[data-minutes]');
-  let seconds = document.querySelector('[data-seconds]');
+  const timer = document.querySelector('.timer');
+  const days = document.querySelector('[data-days]');
+  const hours = document.querySelector('[data-hours]');
+  const minutes = document.querySelector('[data-minutes]');
+  const seconds = document.querySelector('[data-seconds]');
 
 
 const TIMER_DELAY = 1000;
@@ -25,16 +25,6 @@ let isActive = false;
 // let selectedDate = null;
 // let currentDate = null;
 startBtn.disabled = true;
-
-// const calendar = document.querySelector('#datetime-picker');
-// const startBtn = document.querySelector('[data-start-timer]');
-
-
-// Report.info(
-//   '👋 Greeting, my Friend!',
-//   'Please, choose a date and click on start',
-//   'Okay'
-// );
 
 const options = {
   enableTime: true,
@@ -59,7 +49,7 @@ const options = {
         '🥰 Congratulations! Click on start!',
         'Try.',
         'Okay'
-      );
+      ),
       startBtn.disabled = false; 
     }
   },
@@ -79,6 +69,13 @@ function setTimer() {
   isActive = true;
 }
 
+startBtn.addEventListener('click', startTimer);
+
+  function startTimer() {
+    setTimer();
+    startBtn.disabled = true;
+    calendar.disabled = true;
+  } 
   // selectedDate = selectedDates[0].getTime();
   // refs.timer.start();
 
@@ -127,13 +124,7 @@ const { days, hours, minutes, seconds } = convertMs(delta);
   //   refs.calendar.disabled = false;
   // };
 
-  startBtn.addEventListener('click', startTimer);
-
-  function startTimer() {
-    setTimer();
-    startBtn.disabled = true;
-    calendar.disabled = true;
-  } 
+  
 
   function convertMs(ms) {
     const second = 1000;
