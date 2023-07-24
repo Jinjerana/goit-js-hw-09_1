@@ -2,30 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const form = document.querySelector('form.form');
 
-// const options = {
-//   position: 'center-bottom',
-//   distance: '15px',
-//   borderRadius: '15px',
-//   timeout: 10000,
-//   clickToClose: true,
-//   cssAnimationStyle: 'from-right',
-// };
-
-form.addEventListener('click', onPromiseCreate);
-
-// function createPromise(position, delay) {
-//   return new Promise((resolve, reject) => {
-//     setInterval(() => {
-//       const random = Math.random();
-//       if (random > 0.3) {
-//         resolve({ position, delay });
-//       }
-//       else {
-//         reject({ position, delay });
-//       }
-//     }, 1000 * delay)
-//   });
-// }
+form.addEventListener('submit', onPromiseCreate);
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -68,11 +45,3 @@ function onPromiseCreate(e) {
   }
 }
 
-// function createPromise(position, delay) {
-//   const shouldResolve = Math.random() > 0.3;
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
