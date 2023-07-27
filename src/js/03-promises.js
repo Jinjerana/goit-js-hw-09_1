@@ -12,8 +12,8 @@ function createPromise(position, delay) {
         resolve({ position, delay });
       } else {
         reject({ position, delay });
-      } 
-    }, 1000 * delay);
+      }
+    }, delay);
   });
 }
 
@@ -25,9 +25,6 @@ function onPromiseCreate(e) {
   let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    
-    inputDelay += inputStep;
-
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
         Notify.success(
@@ -41,7 +38,7 @@ function onPromiseCreate(e) {
           1000 * (i + 1)
         );
       });
-    e.currentTarget.reset();
+    inputDelay += inputStep;
   }
+  e.currentTarget.reset();
 }
-
